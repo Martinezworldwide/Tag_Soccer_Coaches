@@ -3,31 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instagram Username Copier</title>
+    <title>La Liga Coaches Instagram Tags</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <div class="container">
-        <h1>Copy Instagram Usernames</h1>
-        <textarea id="usernames" rows="14" readonly>
-@michel8sanchez
-@rubenbaraja
-@pezzolanodt
-@rafabenitezrb
-@jose.bordalas
-@garciapimienta7
-@xavi
-@marcelinogarciatoral
-@luisgarciaplaza
-@simeone
-@pepe__mel
-@mrancelotti
-@_luis_garcia_10
-@alonsodt
-        </textarea>
-        <button id="copyButton" onclick="copyToClipboard()">Copy to Clipboard</button>
-        <button id="postToInstagramButton" onclick="openInstagram()">Post to Instagram</button>
-        <div id="copyMessage" class="copy-message"></div>
+        <header>
+            <h1>La Liga Coaches Instagram</h1>
+            <div class="theme-toggle">
+                <button id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </header>
+        
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search by coach or team name...">
+            <select id="teamFilter">
+                <option value="">All Teams</option>
+            </select>
+        </div>
+
+        <div class="view-controls">
+            <button id="listViewBtn" class="view-btn active">
+                <i class="fas fa-list"></i> List
+            </button>
+            <button id="gridViewBtn" class="view-btn">
+                <i class="fas fa-th"></i> Grid
+            </button>
+        </div>
+
+        <div id="coachesGrid" class="coaches-container list-view"></div>
+
+        <div class="action-buttons">
+            <button id="copyAllBtn" class="primary-btn">
+                <i class="fas fa-copy"></i> Copy All Tags
+            </button>
+            <button id="instagramBtn" class="secondary-btn">
+                <i class="fab fa-instagram"></i> Open Instagram
+            </button>
+        </div>
+
+        <div id="notification" class="notification"></div>
     </div>
     <script src="script.js"></script>
 </body>
