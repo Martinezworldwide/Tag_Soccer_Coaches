@@ -27,39 +27,55 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 20px;
+    background-color: #f5f5f5;
+    color: #333;
 }
 
 .container {
-    max-width: 600px;
+    max-width: 1200px;
     margin: 0 auto;
-    background-color: white;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
     text-align: center;
     color: #1a73e8;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .search-box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
 }
 
-#searchInput {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+.search-input-container {
+    display: flex;
+    gap: 10px;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
     font-size: 16px;
-    margin-bottom: 5px;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #1a73e8;
 }
 
 .character-counter {
@@ -70,113 +86,144 @@ h1 {
 }
 
 .character-counter.error {
-    color: #f44336;
-    font-weight: bold;
+    color: #dc3545;
 }
 
-.coaches-list {
+.buttons {
+    display: flex;
+    gap: 10px;
     margin-bottom: 20px;
-    max-height: 400px;
-    overflow-y: auto;
+}
+
+button {
+    padding: 12px 20px;
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+button:hover {
+    background-color: #1557b0;
+}
+
+.league-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.league-title {
+    color: #1a73e8;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.coaches-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
 }
 
 .coach-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid #eee;
+    padding: 12px;
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.coach-item:last-child {
-    border-bottom: none;
+.coach-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.username-link {
+    text-decoration: none;
+    color: #1a73e8;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s;
+}
+
+.username-link:hover {
+    color: #1557b0;
 }
 
 .username {
-    font-size: 16px;
-    color: #333;
-    word-break: break-all;
+    font-weight: 500;
+    margin-right: 8px;
 }
 
-.copy-btn, .instagram-btn {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
+.coach-actions {
     display: flex;
-    align-items: center;
     gap: 8px;
-    transition: background-color 0.2s;
-    white-space: nowrap;
+    align-items: center;
 }
 
 .copy-btn {
-    background-color: #1a73e8;
-    color: white;
+    padding: 8px 12px;
+    background-color: #e9ecef;
+    color: #495057;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
 .copy-btn:hover {
-    background-color: #1557b0;
+    background-color: #dee2e6;
 }
 
-.instagram-btn {
-    background-color: #e1306c;
-    color: white;
-}
-
-.instagram-btn:hover {
-    background-color: #c81e5a;
-}
-
-.action-buttons {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
+.copy-btn i {
+    font-size: 14px;
 }
 
 .notification {
     position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 10px 20px;
-    background-color: #4caf50;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    background-color: #28a745;
     color: white;
-    border-radius: 4px;
+    border-radius: 6px;
     opacity: 0;
     transition: opacity 0.3s;
-}
-
-.notification.success {
-    background-color: #4caf50;
+    z-index: 1000;
 }
 
 .notification.error {
-    background-color: #f44336;
+    background-color: #dc3545;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
     .container {
         padding: 15px;
     }
-    
-    .action-buttons {
+
+    .coaches-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .buttons {
         flex-direction: column;
     }
-    
-    .copy-btn, .instagram-btn {
-        width: 100%;
-        justify-content: center;
-    }
-    
-    .coach-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-    }
-    
-    .username {
+
+    button {
         width: 100%;
     }
 }
