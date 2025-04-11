@@ -9,38 +9,20 @@
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>La Liga Coaches Instagram</h1>
-            <div class="theme-toggle">
-                <button id="themeToggle">
-                    <i class="fas fa-moon"></i>
-                </button>
-            </div>
-        </header>
+        <h1>La Liga Coaches Instagram</h1>
         
-        <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="Search by coach or team name...">
-            <select id="teamFilter">
-                <option value="">All Teams</option>
-            </select>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search coaches...">
+            <div id="characterCounter" class="character-counter">Characters: 0 (2200 remaining)</div>
         </div>
 
-        <div class="view-controls">
-            <button id="listViewBtn" class="view-btn active">
-                <i class="fas fa-list"></i> List
-            </button>
-            <button id="gridViewBtn" class="view-btn">
-                <i class="fas fa-th"></i> Grid
-            </button>
-        </div>
-
-        <div id="coachesGrid" class="coaches-container list-view"></div>
+        <div id="coachesList" class="coaches-list"></div>
 
         <div class="action-buttons">
-            <button id="copyAllBtn" class="primary-btn">
+            <button id="copyAllBtn" class="copy-btn">
                 <i class="fas fa-copy"></i> Copy All Tags
             </button>
-            <button id="instagramBtn" class="secondary-btn">
+            <button id="instagramBtn" class="instagram-btn">
                 <i class="fab fa-instagram"></i> Open Instagram
             </button>
         </div>
