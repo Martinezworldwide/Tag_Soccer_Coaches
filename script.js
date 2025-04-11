@@ -27,32 +27,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function setupEventListeners() {
     // Search functionality
-    document.getElementById('searchInput').addEventListener('input', (e) => {
-        const searchTerm = e.target.value.toLowerCase();
-        const filtered = coaches.filter(username => 
-            username.toLowerCase().includes(searchTerm)
-        );
-        renderCoaches(filtered);
-        updateCharacterCount();
-    });
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filtered = coaches.filter(username => 
+                username.toLowerCase().includes(searchTerm)
+            );
+            renderCoaches(filtered);
+            updateCharacterCount();
+        });
+    }
 
     // Copy all usernames
-    document.getElementById('copyAllBtn').addEventListener('click', copyAllUsernames);
+    const copyAllBtn = document.getElementById('copyAllBtn');
+    if (copyAllBtn) {
+        copyAllBtn.addEventListener('click', copyAllUsernames);
+    }
 
     // Open Instagram
-    document.getElementById('instagramBtn').addEventListener('click', openInstagram);
+    const instagramBtn = document.getElementById('instagramBtn');
+    if (instagramBtn) {
+        instagramBtn.addEventListener('click', openInstagram);
+    }
 }
 
 function renderCoaches(coachesToRender) {
     const container = document.getElementById('coachesList');
-    container.innerHTML = coachesToRender.map(username => `
-        <div class="coach-item">
-            <span class="username">${username}</span>
-            <button class="copy-btn" onclick="copySingleUsername('${username}')">
-                <i class="fas fa-copy"></i>
-            </button>
-        </div>
-    `).join('');
+    if (container) {
+        container.innerHTML = coachesToRender.map(username => `
+            <div class="coach-item">
+                <span class="username">${username}</span>
+                <button class="copy-btn" onclick="copySingleUsername('${username}')">
+                    <i class="fas fa-copy"></i>
+                </button>
+            </div>
+        `).join('');
+    }
 }
 
 function copyAllUsernames() {
@@ -76,17 +87,19 @@ function copyToClipboard(text, successMessage) {
 
 function showNotification(message, type) {
     const notification = document.getElementById('notification');
-    notification.textContent = message;
-    notification.className = `notification ${type}`;
-    notification.style.opacity = '1';
-    
-    setTimeout(() => {
-        notification.style.opacity = '0';
-    }, 2000);
+    if (notification) {
+        notification.textContent = message;
+        notification.className = `notification ${type}`;
+        notification.style.opacity = '1';
+        
+        setTimeout(() => {
+            notification.style.opacity = '0';
+        }, 2000);
+    }
 }
 
 function updateCharacterCount() {
-    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+    const searchTerm = document.getElementById('searchInput')?.value.toLowerCase() || '';
     const filtered = coaches.filter(username => 
         username.toLowerCase().includes(searchTerm)
     );
@@ -94,8 +107,10 @@ function updateCharacterCount() {
     const remaining = INSTAGRAM_LIMIT - totalLength;
     
     const counter = document.getElementById('characterCounter');
-    counter.textContent = `Characters: ${totalLength} (${remaining} remaining)`;
-    counter.className = `character-counter ${remaining < 0 ? 'error' : ''}`;
+    if (counter) {
+        counter.textContent = `Characters: ${totalLength} (${remaining} remaining)`;
+        counter.className = `character-counter ${remaining < 0 ? 'error' : ''}`;
+    }
 }
 
 function openInstagram() {
